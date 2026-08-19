@@ -1179,7 +1179,7 @@ jobs:
           GH_AW_AMBIENT_CONTEXT: ${{ needs.agent.outputs.ambient_context }}
           GH_AW_WORKFLOW_ID: "dependabot-triage"
         with:
-          github-token: ${{ steps.safe-outputs-app-token.outputs.token }}
+          github-token: ${{ steps.safe-outputs-app-token.outputs.token || github.token }}
           script: |
             const { setupGlobals } = require('${{ runner.temp }}/gh-aw/actions/setup_globals.cjs');
             setupGlobals(core, github, context, exec, io, getOctokit);
@@ -1196,7 +1196,7 @@ jobs:
           GH_AW_DETECTION_CONCLUSION: ${{ needs.detection.outputs.detection_conclusion }}
           GH_AW_DETECTION_REASON: ${{ needs.detection.outputs.detection_reason }}
         with:
-          github-token: ${{ steps.safe-outputs-app-token.outputs.token }}
+          github-token: ${{ steps.safe-outputs-app-token.outputs.token || github.token }}
           script: |
             const { setupGlobals } = require('${{ runner.temp }}/gh-aw/actions/setup_globals.cjs');
             setupGlobals(core, github, context, exec, io, getOctokit);
@@ -1211,7 +1211,7 @@ jobs:
           GH_AW_WORKFLOW_NAME: "Dependabot PR Triage (skills-driven)"
           GH_AW_WORKFLOW_SOURCE_URL: "${{ github.server_url }}/${{ github.repository }}/blob/${{ github.ref_name }}/.github/workflows/dependabot-triage.md"
         with:
-          github-token: ${{ steps.safe-outputs-app-token.outputs.token }}
+          github-token: ${{ steps.safe-outputs-app-token.outputs.token || github.token }}
           script: |
             const { setupGlobals } = require('${{ runner.temp }}/gh-aw/actions/setup_globals.cjs');
             setupGlobals(core, github, context, exec, io, getOctokit);
@@ -1226,7 +1226,7 @@ jobs:
           GH_AW_WORKFLOW_NAME: "Dependabot PR Triage (skills-driven)"
           GH_AW_WORKFLOW_SOURCE_URL: "${{ github.server_url }}/${{ github.repository }}/blob/${{ github.ref_name }}/.github/workflows/dependabot-triage.md"
         with:
-          github-token: ${{ steps.safe-outputs-app-token.outputs.token }}
+          github-token: ${{ steps.safe-outputs-app-token.outputs.token || github.token }}
           script: |
             const { setupGlobals } = require('${{ runner.temp }}/gh-aw/actions/setup_globals.cjs');
             setupGlobals(core, github, context, exec, io, getOctokit);
@@ -1272,7 +1272,7 @@ jobs:
           GH_AW_MISSING_DATA_REPORT_AS_FAILURE: "true"
           GH_AW_TIMEOUT_MINUTES: "30"
         with:
-          github-token: ${{ steps.safe-outputs-app-token.outputs.token }}
+          github-token: ${{ steps.safe-outputs-app-token.outputs.token || github.token }}
           script: |
             const { setupGlobals } = require('${{ runner.temp }}/gh-aw/actions/setup_globals.cjs');
             setupGlobals(core, github, context, exec, io, getOctokit);
@@ -1624,7 +1624,7 @@ jobs:
           GITHUB_API_URL: ${{ github.api_url }}
           GH_AW_SAFE_OUTPUTS_HANDLER_CONFIG: "{\"add_comment\":{\"footer\":true,\"hide_older_comments\":true,\"max\":20,\"target\":\"*\"},\"create_report_incomplete_issue\":{},\"missing_data\":{},\"missing_tool\":{},\"noop\":{\"max\":1,\"report-as-issue\":\"false\"},\"report_incomplete\":{}}"
         with:
-          github-token: ${{ steps.safe-outputs-app-token.outputs.token }}
+          github-token: ${{ steps.safe-outputs-app-token.outputs.token || github.token }}
           script: |
             const { setupGlobals } = require('${{ runner.temp }}/gh-aw/actions/setup_globals.cjs');
             setupGlobals(core, github, context, exec, io, getOctokit);
